@@ -1,12 +1,7 @@
 import { AssetShow } from "@/components/AssetShow";
-import { Asset } from "@/model";
+import { getAssets } from "@/queries/queries";
 import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
-import Image from "next/image";
 
-export async function getAssets(): Promise<Asset[]> {
-  const response = await fetch(`http://localhost:3001/assets/`);
-  return response.json();
-}
 
 export default async function AssetListPage(
   {searchParams}:

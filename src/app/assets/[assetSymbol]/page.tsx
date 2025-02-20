@@ -8,8 +8,7 @@ import { AssetChartComponent } from "./AssetChartComponent";
 export async function getAsset(symbol: string): Promise<Asset> {
     const response = await fetch(`http://localhost:3001/assets/${symbol}`);
     return response.json();
-}
-
+  }
 
 export default async function AssetDashboard({ params, searchParams }: { 
     params: Promise<{assetSymbol: string}>
