@@ -4,6 +4,7 @@ import { TabsItem } from "../../../components/Tabs";
 import { Asset, OrderType } from "@/model";
 import { Card, Tabs } from "flowbite-react";
 import { AssetChartComponent } from "./AssetChartComponent";
+import { WalletList } from "@/components/WalletList";
 
 export async function getAsset(symbol: string): Promise<Asset> {
     const response = await fetch(`http://localhost:3001/assets/${symbol}`);
@@ -19,6 +20,9 @@ export default async function AssetDashboard({ params, searchParams }: {
 
     const asset = await getAsset(assetSymbol);
 
+     if (!walletId) {
+        return <WalletList />;
+    }
 
     return (
     <div className="flex flex-col space-y-5 flex-grow">

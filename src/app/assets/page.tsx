@@ -1,4 +1,5 @@
 import { AssetShow } from "@/components/AssetShow";
+import { WalletList } from "@/components/WalletList";
 import { getAssets } from "@/queries/queries";
 import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 
@@ -7,9 +8,13 @@ export default async function AssetListPage(
   {searchParams}:
   {searchParams: Promise<{wallet_id: string}>
   }) {
-  // const { wallet_id } = await searchParams;
+  const { wallet_id } = await searchParams;
   const assets = await getAssets();
-    console.log(assets)
+  
+  if (!wallet_id) {
+    return <WalletList />;
+  }
+
   return (
     <div className="flex flex-col space-y-5 flex-grow">
       <article className="format">
