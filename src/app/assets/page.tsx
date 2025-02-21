@@ -10,8 +10,8 @@ export default async function AssetListPage(
   {searchParams: Promise<{wallet_id: string}>
   }) {
   const { wallet_id } = await searchParams;
-  const assets = await getAssets();
   
+  const assets = await getAssets();
   if (!wallet_id) {
     return <WalletList />;
   }
